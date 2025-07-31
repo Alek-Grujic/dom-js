@@ -14,12 +14,12 @@ let highscore = 0;
 
 document.querySelector('.check').addEventListener('click', function () {
   const guess = Number(document.querySelector('.guess').value);
-  console.log(guess, typeof guess);
+  // wrong number
   if (!(guess > 0) || !(guess < 21)) {
     document.querySelector('.message').textContent =
       'Number must be between 1 and 20!';
   }
-
+  // no number
   if (!guess) {
     document.querySelector('.message').textContent = 'No number!';
   }
@@ -28,6 +28,7 @@ document.querySelector('.check').addEventListener('click', function () {
     if (guess === startingNumber) {
       document.querySelector('.message').textContent = 'Correct number!';
       document.querySelector('.highscore').textContent = score;
+      document.querySelector('.number').textContent = guess;
       document.body.style.background = '#60b347';
       document.querySelector('.check').disabled = true;
     }
@@ -42,4 +43,14 @@ document.querySelector('.check').addEventListener('click', function () {
       document.querySelector('.score').textContent = --score;
     }
   }
+});
+
+document.querySelector('.again').addEventListener('click', function () {
+  score = 20;
+  startingNumber = Math.floor(Math.random() * 20) + 1;
+  document.querySelector('.guess').value = '';
+  document.querySelector('.message').textContent = 'Start guessing...';
+  document.body.style.background = '#222';
+  document.querySelector('.score').textContent = score;
+  document.querySelector('.check').disabled = false;
 });
