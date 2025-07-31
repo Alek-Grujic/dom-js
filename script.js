@@ -51,6 +51,7 @@ document.querySelector('.again').addEventListener('click', function () {
   startingNumber = Math.floor(Math.random() * 20) + 1;
   document.querySelector('.guess').value = '';
   document.querySelector('.message').textContent = 'Start guessing...';
+  document.querySelector('.number').textContent = '?';
   document.body.style.background = '#222';
   document.querySelector('.score').textContent = score;
   document.querySelector('.check').disabled = false;
